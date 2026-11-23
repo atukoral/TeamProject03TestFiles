@@ -6,9 +6,9 @@ public class FlightBookingObserverTest {
     @Test
     public void testAddObserver() {
         Flight flight = new Flight("F101", "JFK", "LAX", 100);
-
+		String lastMessage = "";
         PassengerNotification passenger =
-                new PassengerNotification("John", "john@email.com");
+                new PassengerNotification("John", "john@email.com", flight, lastMessage);
 
         flight.addObserver(passenger);
 
@@ -19,9 +19,9 @@ public class FlightBookingObserverTest {
     @Test
     public void testRemoveObserver() {
         Flight flight = new Flight("F102", "JFK", "LAX", 100);
-
+		String lastMessage = "";
         PassengerNotification passenger =
-                new PassengerNotification("John", "john@email.com");
+                new PassengerNotification("John", "john@email.com",flight,lastMessage);
 
         flight.addObserver(passenger);
         flight.removeObserver(passenger);
@@ -33,9 +33,9 @@ public class FlightBookingObserverTest {
     @Test
     public void testNotifySingleObserver() {
         Flight flight = new Flight("F103", "JFK", "LAX", 100);
-
+		String lastMessage = "";
         PassengerNotification passenger =
-                new PassengerNotification("John", "john@email.com");
+                new PassengerNotification("John", "john@email.com",flight,lastMessage);
 
         flight.addObserver(passenger);
         flight.notifyObservers("Flight delayed by 2 hours");
@@ -49,12 +49,12 @@ public class FlightBookingObserverTest {
     @Test
     public void testNotifyMultipleObservers() {
         Flight flight = new Flight("F104", "JFK", "LAX", 100);
-
+		String lastMessage = "";
         PassengerNotification passenger1 =
-                new PassengerNotification("John", "john@email.com");
+                new PassengerNotification("John", "john@email.com",flight,lastMessage);
 
         PassengerNotification passenger2 =
-                new PassengerNotification("Mary", "mary@email.com");
+                new PassengerNotification("Mary", "mary@email.com",flight,lastMessage);
 
         flight.addObserver(passenger1);
         flight.addObserver(passenger2);
@@ -72,9 +72,9 @@ public class FlightBookingObserverTest {
     @Test
     public void testRemovedObserverDoesNotReceiveNotification() {
         Flight flight = new Flight("F105", "JFK", "LAX", 100);
-
+		String lastMessage = "";
         PassengerNotification passenger =
-                new PassengerNotification("John", "john@email.com");
+                new PassengerNotification("John", "john@email.com",flight,lastMessage);
 
         flight.addObserver(passenger);
         flight.removeObserver(passenger);
@@ -88,12 +88,12 @@ public class FlightBookingObserverTest {
     @Test
     public void testNotificationAfterRemovingOneObserver() {
         Flight flight = new Flight("F106", "JFK", "LAX", 100);
-
+		String lastMessage = "";
         PassengerNotification passenger1 =
-                new PassengerNotification("John", "john@email.com");
+                new PassengerNotification("John", "john@email.com",flight,lastMessage);
 
         PassengerNotification passenger2 =
-                new PassengerNotification("Mary", "mary@email.com");
+                new PassengerNotification("Mary", "mary@email.com",flight,lastMessage);
 
         flight.addObserver(passenger1);
         flight.addObserver(passenger2);
@@ -111,9 +111,9 @@ public class FlightBookingObserverTest {
     @Test
     public void testMultipleNotifications() {
         Flight flight = new Flight("F107", "JFK", "LAX", 100);
-
+		String lastMessage = "";
         PassengerNotification passenger =
-                new PassengerNotification("John", "john@email.com");
+                new PassengerNotification("John", "john@email.com",flight,lastMessage);
 
         flight.addObserver(passenger);
 

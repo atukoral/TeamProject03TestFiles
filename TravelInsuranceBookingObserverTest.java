@@ -8,9 +8,9 @@ public class TravelInsuranceBookingObserverTest {
     public void testAddObserver() {
         InsurancePolicy policy = new InsurancePolicy(
                 "P101", "Basic Policy", 10000, true);
-
+		String lastMessage = "";
         PolicyholderNotification customer =
-                new PolicyholderNotification("John", "john@email.com");
+                new PolicyholderNotification("John", "john@email.com", policy,lastMessage);
 
         policy.addObserver(customer);
 
@@ -22,9 +22,9 @@ public class TravelInsuranceBookingObserverTest {
     public void testRemoveObserver() {
         InsurancePolicy policy = new InsurancePolicy(
                 "P102", "Premium Policy", 20000, true);
-
+		String lastMessage = "";
         PolicyholderNotification customer =
-                new PolicyholderNotification("John", "john@email.com");
+                new PolicyholderNotification("John", "john@email.com",policy,lastMessage);
 
         policy.addObserver(customer);
         policy.removeObserver(customer);
@@ -37,9 +37,9 @@ public class TravelInsuranceBookingObserverTest {
     public void testNotifySingleObserver() {
         InsurancePolicy policy = new InsurancePolicy(
                 "P103", "Basic Policy", 10000, true);
-
+		String lastMessage = "";
         PolicyholderNotification customer =
-                new PolicyholderNotification("John", "john@email.com");
+                new PolicyholderNotification("John", "john@email.com",policy,lastMessage);
 
         policy.addObserver(customer);
         policy.notifyObservers("Policy is no longer available");
@@ -55,12 +55,12 @@ public class TravelInsuranceBookingObserverTest {
     public void testNotifyMultipleObservers() {
         InsurancePolicy policy = new InsurancePolicy(
                 "P104", "Premium Policy", 20000, true);
-
+		String lastMessage = "";
         PolicyholderNotification customer1 =
-                new PolicyholderNotification("John", "john@email.com");
+                new PolicyholderNotification("John", "john@email.com",policy,lastMessage);
 
         PolicyholderNotification customer2 =
-                new PolicyholderNotification("Mary", "mary@email.com");
+                new PolicyholderNotification("Mary", "mary@email.com",policy,lastMessage);
 
         policy.addObserver(customer1);
         policy.addObserver(customer2);
@@ -79,9 +79,9 @@ public class TravelInsuranceBookingObserverTest {
     public void testRemovedObserverDoesNotReceiveNotification() {
         InsurancePolicy policy = new InsurancePolicy(
                 "P105", "Basic Policy", 10000, true);
-
+		String lastMessage = "";
         PolicyholderNotification customer =
-                new PolicyholderNotification("John", "john@email.com");
+                new PolicyholderNotification("John", "john@email.com",policy,lastMessage);
 
         policy.addObserver(customer);
         policy.removeObserver(customer);

@@ -8,9 +8,9 @@ public class HotelBookingObserverTest {
     public void testAddObserver() {
         Hotel hotel = new Hotel("H101", "Grand Hotel",
                 "New York", 50);
-
+		String lastMessage = "";
         GuestNotification guest =
-                new GuestNotification("John", "john@email.com");
+                new GuestNotification("John", "john@email.com",hotel,lastMessage);
 
         hotel.addObserver(guest);
 
@@ -22,9 +22,9 @@ public class HotelBookingObserverTest {
     public void testRemoveObserver() {
         Hotel hotel = new Hotel("H102", "Grand Hotel",
                 "New York", 50);
-
+		String lastMessage = "";
         GuestNotification guest =
-                new GuestNotification("John", "john@email.com");
+                new GuestNotification("John", "john@email.com",hotel,lastMessage);
 
         hotel.addObserver(guest);
         hotel.removeObserver(guest);
@@ -37,9 +37,9 @@ public class HotelBookingObserverTest {
     public void testNotifySingleObserver() {
         Hotel hotel = new Hotel("H103", "Grand Hotel",
                 "New York", 50);
-
+		String lastMessage = "";
         GuestNotification guest =
-                new GuestNotification("John", "john@email.com");
+                new GuestNotification("John", "john@email.com",hotel,lastMessage);
 
         hotel.addObserver(guest);
         hotel.notifyObservers("Rooms are now available");
@@ -54,12 +54,12 @@ public class HotelBookingObserverTest {
     public void testNotifyMultipleObservers() {
         Hotel hotel = new Hotel("H104", "Beach Resort",
                 "Miami", 100);
-
+		String lastMessage = "";
         GuestNotification guest1 =
-                new GuestNotification("John", "john@email.com");
+                new GuestNotification("John", "john@email.com",hotel,lastMessage);
 
         GuestNotification guest2 =
-                new GuestNotification("Mary", "mary@email.com");
+                new GuestNotification("Mary", "mary@email.com",hotel, lastMessage);
 
         hotel.addObserver(guest1);
         hotel.addObserver(guest2);
@@ -78,9 +78,9 @@ public class HotelBookingObserverTest {
     public void testRemovedObserverDoesNotReceiveNotification() {
         Hotel hotel = new Hotel("H105", "Grand Hotel",
                 "New York", 50);
-
+		String lastMessage = "";
         GuestNotification guest =
-                new GuestNotification("John", "john@email.com");
+                new GuestNotification("John", "john@email.com", hotel,lastMessage);
 
         hotel.addObserver(guest);
         hotel.removeObserver(guest);
@@ -95,12 +95,12 @@ public class HotelBookingObserverTest {
     public void testNotificationAfterRemovingOneObserver() {
         Hotel hotel = new Hotel("H106", "Beach Resort",
                 "Miami", 100);
-
+		String lastMessage = "";
         GuestNotification guest1 =
-                new GuestNotification("John", "john@email.com");
+                new GuestNotification("John", "john@email.com",hotel,lastMessage);
 
         GuestNotification guest2 =
-                new GuestNotification("Mary", "mary@email.com");
+                new GuestNotification("Mary", "mary@email.com",hotel,lastMessage);
 
         hotel.addObserver(guest1);
         hotel.addObserver(guest2);
@@ -119,9 +119,9 @@ public class HotelBookingObserverTest {
     public void testMultipleNotifications() {
         Hotel hotel = new Hotel("H107", "Grand Hotel",
                 "New York", 50);
-
+		String lastMessage = "";
         GuestNotification guest =
-                new GuestNotification("John", "john@email.com");
+                new GuestNotification("John", "john@email.com",hotel,lastMessage);
 
         hotel.addObserver(guest);
 
